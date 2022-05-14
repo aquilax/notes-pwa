@@ -24,9 +24,6 @@ const importBtn = document.querySelector(".import-btn");
 const exportBtn = document.querySelector(".export-btn");
 const importFile = document.getElementById("import-file");
 
-// set the mode according to the system preference
-SetDarkModeAndAddEventListener();
-
 if (false && navigator.serviceWorker) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
@@ -99,21 +96,10 @@ function updateFileList() {
     content.forEach((c) => {
       filesContainer.appendChild(c);
     });
-
-    console.log(content);
-
-    // filesContainer.innerHTML = "";
-    // filesContainer.insertAdjacentHTML("afterbegin", content);
   });
 }
 
 updateFileList();
-
-(async () => {
-  let x = await getFileByIndex((await getTotalFiles()) - 1);
-  console.log(x);
-})();
-
 // ________________________________________________________________________
 
 // ALL EVENT LISTENERS HERE....
@@ -149,8 +135,6 @@ fileNameElement.addEventListener("input", function (e) {
 });
 
 notepad.addEventListener("keydown", (e) => {
-  console.log(e.key);
-
   if (e.key == "Tab") {
     e.preventDefault();
     var start = notepad.selectionStart;
@@ -335,33 +319,8 @@ function openNoteInEditor(n) {
   note = n; // set the global note object
   fileNameElement.value = n.name;
   notepad.value = n.content;
+  notepad.focus();
   localStorage.setItem("currentFileId", n.id);
-}
-
-function SetDarkModeAndAddEventListener() {
-  if (
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  ) {
-    //dark mode
-    console.info("DARK MODE ACTIVATED");
-    body.classList.add("dark");
-  } else {
-    checkAndRemoveClass(body, "dark");
-  }
-  // listen for the mode change
-  // window
-  // 	.matchMedia("(prefers-color-scheme: dark)")
-  // 	.addEventListener("change", function (e) {
-  // 		if (e.matches) {
-  // 			console.info("ACTIVATED DARK MODE");
-  // 			body.classList.add("dark");
-  // 		} else {
-  // 			console.info("ACTIVATED LIGHT MODE");
-  // 			// body.classList.remove("dark");
-  // 			checkAndRemoveClass(body,"dark")
-  // 		}
-  // 	});
 }
 
 function setIndicatorStatusColor(color) {

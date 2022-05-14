@@ -1,102 +1,99 @@
 export async function addOrUpdateNote(note) {
-	let db = await idb.openDB("NotesDb", 1, {
-		upgrade(db, oldVersion, newVersion, transaction) {
-			let objStore = db.createObjectStore("notes", { keyPath: "id" });
-		},
-	});
+  let db = await idb.openDB("NotesDb", 1, {
+    upgrade(db, _oldVersion, _newVersion, _transaction) {
+      let objStore = db.createObjectStore("notes", { keyPath: "id" });
+    },
+  });
 
-	let tx = db.transaction("notes", "readwrite");
-	let store = tx.objectStore("notes");
+  let tx = db.transaction("notes", "readwrite");
+  let store = tx.objectStore("notes");
 
-	await store.put(note);
+  await store.put(note);
 
-	await tx.done;
-	db.close();
+  await tx.done;
+  db.close();
 }
 
 export async function getNote(noteId) {
-	let db = await idb.openDB("NotesDb", 1, {
-		upgrade(db, oldVersion, newVersion, transaction) {
-			let objStore = db.createObjectStore("notes", { keyPath: "id" });
-		},
-	});
+  let db = await idb.openDB("NotesDb", 1, {
+    upgrade(db, _oldVersion, _newVersion, _transaction) {
+      let objStore = db.createObjectStore("notes", { keyPath: "id" });
+    },
+  });
 
-	let tx = db.transaction("notes");
-	let store = tx.objectStore("notes");
+  let tx = db.transaction("notes");
+  let store = tx.objectStore("notes");
 
-	let note = await store.get(noteId);
+  let note = await store.get(noteId);
 
-	await tx.done;
-	db.close();
+  await tx.done;
+  db.close();
 
-	return note;
+  return note;
 }
 
 export async function getAllNotes() {
-	let db = await idb.openDB("NotesDb", 1, {
-		upgrade(db, oldVersion, newVersion, transaction) {
-			let objStore = db.createObjectStore("notes", { keyPath: "id" });
-		},
-	});
+  let db = await idb.openDB("NotesDb", 1, {
+    upgrade(db, _oldVersion, _newVersion, _transaction) {
+      let objStore = db.createObjectStore("notes", { keyPath: "id" });
+    },
+  });
 
-	let tx = db.transaction("notes");
-	let store = tx.objectStore("notes");
+  let tx = db.transaction("notes");
+  let store = tx.objectStore("notes");
 
-	let notes = await store.getAll();
+  let notes = await store.getAll();
 
-	await tx.done;
-	db.close();
+  await tx.done;
+  db.close();
 
-	return notes;
+  return notes;
 }
 
 export async function deleteNote(noteId) {
-	let db = await idb.openDB("NotesDb", 1, {
-		upgrade(db, oldVersion, newVersion, transaction) {
-			let objStore = db.createObjectStore("notes", { keyPath: "id" });
-		},
-	});
+  let db = await idb.openDB("NotesDb", 1, {
+    upgrade(db, _oldVersion, _newVersion, _transaction) {
+      let objStore = db.createObjectStore("notes", { keyPath: "id" });
+    },
+  });
 
-	let tx = db.transaction("notes", "readwrite");
-	let store = tx.objectStore("notes");
+  let tx = db.transaction("notes", "readwrite");
+  let store = tx.objectStore("notes");
 
-	await store.delete(noteId);
+  await store.delete(noteId);
 
-	await tx.done;
-	db.close();
+  await tx.done;
+  db.close();
 
-	return;
+  return;
 }
 
 export async function getTotalFiles() {
-	let db = await idb.openDB("NotesDb", 1, {
-		upgrade(db, oldVersion, newVersion, transaction) {
-			let objStore = db.createObjectStore("notes", { keyPath: "id" });
-		},
-	});
+  let db = await idb.openDB("NotesDb", 1, {
+    upgrade(db, _oldVersion, _newVersion, _transaction) {
+      let objStore = db.createObjectStore("notes", { keyPath: "id" });
+    },
+  });
 
-	// let tx = db.transaction("notes");
-	// let store = tx.objectStore("notes");
+  const count = await db.count("notes");
 
-	const count = await db.count("notes");
+  db.close();
 
-	db.close();
-
-	return count;
+  return count;
 }
 
 export async function getFileByIndex(index) {
-	let db = await idb.openDB("NotesDb", 1, {
-		upgrade(db, oldVersion, newVersion, transaction) {
-			let objStore = db.createObjectStore("notes", { keyPath: "id" });
-		},
-	});
+  let db = await idb.openDB("NotesDb", 1, {
+    upgrade(db, _oldVersion, _newVersion, _transaction) {
+      let objStore = db.createObjectStore("notes", { keyPath: "id" });
+    },
+  });
 
-	let cursor = await db.transaction("notes").store.openCursor();
+  let cursor = await db.transaction("notes").store.openCursor();
 
-	if (index) cursor = await cursor.advance(index);
+  if (index) cursor = await cursor.advance(index);
 
-	db.close();
+  db.close();
 
-	return cursor.value;
+  return cursor.value;
 }

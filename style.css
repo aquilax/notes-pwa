@@ -118,14 +118,8 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  /* background-color: var(--left-panel-bg); */
 
   background-color: var(--left-panel-bg);
-  -webkit-transition: background-color 600ms ease-in-out;
-  -o-transition: background-color 600ms ease-in-out;
-  transition: background-color 600ms ease-in-out;
-
-  position: relative;
 }
 
 .add-btn-container {
@@ -191,10 +185,6 @@ body {
   cursor: pointer;
 }
 
-/* .options-container button {
-  padding: 0.5em;
-} */
-
 .options-container .add-btn {
   background-color: transparent;
   padding: 0.5rem;
@@ -202,25 +192,12 @@ body {
   font-weight: bold;
   font-size: 1rem;
   border-radius: 5px;
-  -webkit-transition: background-color 100ms ease;
-  -o-transition: background-color 100ms ease;
-  transition: background-color 100ms ease;
   cursor: pointer;
 
-  display: -webkit-box;
-
-  display: -ms-flexbox;
-
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+ align-items: center;
   gap: 5px;
 }
-
-/* .options-container .add-btn span {
-	display: inline-block
-} */
 
 .options-container .add-btn:hover,
 .options-container .add-btn:focus {
@@ -295,31 +272,14 @@ body {
   background-color: transparent;
   color: var(--red);
   cursor: pointer;
-
-  -webkit-transition: color 200ms ease-in-out;
-
-  -o-transition: color 200ms ease-in-out;
-
-  transition: color 200ms ease-in-out;
 }
 
 .footer {
   width: 100%;
   padding: 0.7em 1em;
-  -webkit-box-shadow: -1px -1px 20px rgba(100, 100, 100, 0.1);
   box-shadow: -1px -1px 20px rgba(100, 100, 100, 0.1);
-
-  display: -webkit-box;
-
-  display: -ms-flexbox;
-
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
   opacity: 0.8;
 }
@@ -328,6 +288,7 @@ body {
   font-size: 0.8rem;
   display: block;
 }
+
 .font-mode > span {
   font-size: 1.3em;
   margin-right: 0.3em;
@@ -335,7 +296,6 @@ body {
 
 .repo-link {
   font-size: 0.8rem;
-  /* text-align: center; */
 }
 
 .switch {
@@ -359,8 +319,6 @@ body {
   right: 0;
   bottom: 0;
   background-color: var(--site-bg);
-  -webkit-transition: 0.4s;
-  -o-transition: 0.4s;
   transition: 0.4s;
 }
 
@@ -372,8 +330,6 @@ body {
   left: 0.15em;
   bottom: 0.15em;
   background-color: var(--text-color);
-  -webkit-transition: 0.4s;
-  -o-transition: 0.4s;
   transition: 0.4s;
 }
 
@@ -382,13 +338,10 @@ input:checked + .slider {
 }
 
 input:focus + .slider {
-  -webkit-box-shadow: 0 0 1px var(--orange);
   box-shadow: 0 0 1px var(--orange);
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(1em);
-  -ms-transform: translateX(1em);
   transform: translateX(1em);
 }
 
@@ -408,11 +361,6 @@ input:checked + .slider:before {
   margin: 0 2px;
   border-radius: 5px;
   cursor: pointer;
-
-  -webkit-transition: color 200ms ease-in-out;
-
-  -o-transition: color 200ms ease-in-out;
-
   transition: color 200ms ease-in-out;
 }
 
@@ -429,9 +377,6 @@ input:checked + .slider:before {
   height: auto;
   overflow-y: scroll;
   background-color: var(--notepad-cont-bg);
-  -webkit-transition: background-color 600ms ease-in-out;
-  -o-transition: background-color 600ms ease-in-out;
-  transition: background-color 600ms ease-in-out;
   padding: 0.5rem 0.7rem;
   display: flex;
 }
@@ -440,7 +385,6 @@ input:checked + .slider:before {
   width: 100%;
   height: 0.2rem;
   background-color: var(--green);
-  border-radius: 2px;
   margin-bottom: 0.5em;
 }
 
@@ -464,13 +408,10 @@ input:checked + .slider:before {
 }
 
 .file-head-container .current-delete-btn:hover {
-  -webkit-transform: scale(1.2);
-  -ms-transform: scale(1.2);
   transform: scale(1.2);
 }
 
 .file-head-container #filename {
-  /* flex-grow: 1; */
   width: 90%;
 }
 
@@ -496,7 +437,6 @@ input:checked + .slider:before {
   display: block;
   flex: 1;
 
-  font-size: .8rem;
   margin-top: 0.5em;
   padding: 0.5rem;
   padding-bottom: 1rem;
@@ -518,10 +458,6 @@ input:checked + .slider:before {
 .remove-btn-style {
   outline: none;
   border: none;
-}
-
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -574,16 +510,4 @@ input:checked + .slider:before {
     display: block;
     opacity: 1;
   }
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-}
-
-/* X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-}
-
-/* XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) {
 }
